@@ -51,6 +51,8 @@ app.use(logger('dev'));
 app.set('view engine', 'ejs');
 app.set('views', 'views');
 
+const cluckRouter = require('./routes/clucks');
+app.use('/clucks', cluckRouter);
 
 const PORT = 5000;
 const HOST = "localhost";

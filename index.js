@@ -19,6 +19,31 @@ app.use(methodOverride((request, response) => {
     }
 }))
 
+app.use((request, response, next) => {
+    const username = request.cookies.username;
+    response.locals.username = "";
+    if(username){
+        response.locals.username = username;
+        console.log(`Signed in as ${username}`);
+    }
+    next();
+})
+
+app.get('/', (request, response) => {
+    response.render('sign_in')
+})
+
+app.post('/sign_in', (request, response) => {
+    const COOKIE_MAX_AGE = 1000 * 60 * 60 * 24;
+    const username = request.body.username;
+    response.cookie('username', username, {maxAge: COOKIE_MAX_AGE});
+    response.redirect('/');
+})
+app.post('/sign_out', (request, response) => {
+    response.clearCookie('username');
+    response.redirect('/');
+})
+
 
 const logger = require('morgan');
 app.use(logger('dev'));

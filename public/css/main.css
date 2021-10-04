@@ -1,3 +1,16 @@
-div.parent-container {
+div.big-container {
     display: flex;
+}
+div.small-container {
+    justify-content: end;
+}
+div.papa-container {
+    display: flex;
+}
+/* div.baby-container {
+    flex: 1 2 auto;
+} */
+nav.border-line {
+    border-bottom: 2px;
+    
 }

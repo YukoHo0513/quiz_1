@@ -1,0 +1,36 @@
+<%- include('../partials/header.ejs') %>
+
+    <% for (let element of list) {%>
+        <div class="container mb-5">
+            <div class="card p-4" style="width: 40rem;">
+                <div class="papa-container">
+                    <div class="baby-container">
+                        <div>
+                            <img class="w-25"
+                                src="https://images.unsplash.com/photo-1605199820234-0811f25a3b13?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1740&q=80">
+                        </div>
+                    </div>
+                    <div class="baby-container">
+                        <div class="card-body">
+                            <h3 class="card-title">
+                                <%= element.username %>
+                            </h3>
+                            <p class="card-text">
+                                <%= element.createdAt %>
+                            </p>
+                            <div class="card-title">
+                                <%= element.content %>
+                            </div>
+                        </div>
+                        <img src="<%= element.imageUrl %> " class="card-img-top">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% } %>
+
+            <%- include('../partials/footer.ejs') %>
+
+
+
+                

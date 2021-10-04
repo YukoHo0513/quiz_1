@@ -10,7 +10,7 @@ router.get('/', (request, response) => {
 router.post('/', (request, response) => {
     knex('clucks')
     .insert({
-        username: username,
+        username: request.cookies.username,
         content: request.body.content,
         imageUrl: request.body.imageUrl,
     })
@@ -20,10 +20,13 @@ router.post('/', (request, response) => {
     })
 })
 
-// router.get('/clucks/index', (request, response) => {
-//     knex('clucks')
-//     .orderBy('createdAt')
+router.get('/index', (request, response) => {
+    knex('clucks')
+    .orderBy('createdAt', 'desc')
+    .then((data) => {
+        response.render('clucks/index', {list: data})
+    })
 
-// })
+})
 
 module.exports = router;

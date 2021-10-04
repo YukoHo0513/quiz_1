@@ -28,8 +28,17 @@ app.use((request, response, next) => {
     }
     next();
 })
+const logger = require('morgan');
+app.use(logger('dev'));
+
+app.set('view engine', 'ejs');
+app.set('views', 'views');
 
 app.get('/', (request, response) => {
+    response.render('clucks/clucks')
+})
+
+app.get('/sign_in', (request, response) => {
     response.render('sign_in')
 })
 
@@ -45,11 +54,7 @@ app.post('/sign_out', (request, response) => {
 })
 
 
-const logger = require('morgan');
-app.use(logger('dev'));
 
-app.set('view engine', 'ejs');
-app.set('views', 'views');
 
 const cluckRouter = require('./routes/clucks');
 app.use('/clucks', cluckRouter);

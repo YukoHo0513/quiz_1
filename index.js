@@ -8,6 +8,7 @@ const methodOverride = require('method-override');
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.use(express.urlencoded({ extended: true}))
+app.locals.moment = require('moment');
 
 const cookieParser = require('cookie-parser')
 app.use(cookieParser());

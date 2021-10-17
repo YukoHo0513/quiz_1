@@ -1,0 +1,31 @@
+<%- include('../partials/header.ejs') %>
+
+    <% for (let element of list) {%>
+        <div class="container mb-4 d-flex justify-content-center">
+            <div class="card p-4" style="width: 35rem;">
+                <div class="papa-container">
+                            <img class="racoon"
+                                src="https://images.unsplash.com/photo-1551647152-eb24b93db57b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1166&q=80">
+                            
+                            <span class="card-title">
+                                <%= element.username %>
+                            </span>
+                      
+                            <span class="card-text">
+                                • <%= moment(element.createdAt).fromNow() %>
+                            </span>
+                            <div class="card-title">
+                                <%= element.content %>
+                            </div>
+                        <img src="<%= element.imageUrl %> " class="card-img-top">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% } %>
+        
+<%- include('../partials/footer.ejs') %>
+
+
+
+                
